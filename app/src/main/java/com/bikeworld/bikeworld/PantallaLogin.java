@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Map;
 
 public class PantallaLogin extends AppCompatActivity {
 
@@ -41,8 +46,23 @@ public class PantallaLogin extends AppCompatActivity {
         System.out.println("RESULNAME: " + user.resulName);
         System.out.println("RESULPASSWORD: "+user.resulPassword);
         System.out.println("RESULNAME2: " + user.getResulName());
+
+        getDatos();
         /*Firebase cadenaUser = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/text/");
-        cadenaUser.child("userName").addValueEventListener(new ValueEventListener() {
+        System.out.println(cadenaUser);
+        JSONObject object = null;
+        try {
+            object = new JSONObject(cadenaUser.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONObject resultado = (JSONObject) object.get("userName");
+            System.out.println("RESULTADO USE: "+resultado);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /*cadenaUser.child("userName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<Object, Map<String, Object>> data =
@@ -52,7 +72,7 @@ public class PantallaLogin extends AppCompatActivity {
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
+        });*/
 
         /*new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/text")
                 .addChildEventListener(new ChildEventListener() {
@@ -90,13 +110,58 @@ public class PantallaLogin extends AppCompatActivity {
 
     }
 
+    public void getDatos(){
+        //accedo a los datos que hay dentro de user/text/
+        Firebase myFirebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/");
+        myFirebase.child("userLog").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<Object, Map<String, Object>> data = (Map<Object, Map<String, Object>>) dataSnapshot.getValue();
+                System.out.println("DATA: "+data);
+
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
     public void onCreateUser(View view) {
-        Intent act2 = new Intent(this, createUser.class);
+                Intent act2 = new Intent(this, createUser.class);
         startActivity(act2);
     }
 
     public void onLogIn(View view) {
+        //ESTO SOLAPA UN USUARIO ANTERIOR
+        //intro usuario
+        new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user")
+                //.push()
+                .child("userLog")
+                .child("userName")
+                //.child("password")
+                .setValue(userName.getText().toString());
+        System.out.println("USUARIO INTRO: "+userName);
+        //intro password
+        new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user")
+                //.push()
+                .child("userLog")
+                .child("password")
+                .setValue(passwordUser.getText().toString());
+        System.out.println("USUARIO INTRO: "+passwordUser);
+
+        //te manda a menú
         Intent act2 = new Intent(this, MenuPrincipalUsuario.class);
         startActivity(act2);
     }
+
+    /*public void onUserLog(View view) {
+        new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/")
+                .push()
+                .child("text")
+                .setValue(userName.getText().toString());
+        System.out.println("USUARIO INTRO: "+userName);
+    }*/
 }

@@ -35,17 +35,18 @@ public class PantallaLogin extends AppCompatActivity {
 
         //String strUserName = introUserName.get;
 
-        User user = new User();
+        //User user = new User();
 
-        user.setUserName(userName.getText().toString());
-        user.setPassword(passwordUser.getText().toString());
+        //user.setUserName(userName.getText().toString());
+        //user.setPassword(passwordUser.getText().toString());
 
         // Use Firebase to populate the list.
         Firebase.setAndroidContext(this);
+        Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user");
 
-        System.out.println("RESULNAME: " + user.resulName);
+        /*System.out.println("RESULNAME: " + user.resulName);
         System.out.println("RESULPASSWORD: "+user.resulPassword);
-        System.out.println("RESULNAME2: " + user.getResulName());
+        System.out.println("RESULNAME2: " + user.getResulName());*/
 
         getDatos();
         /*Firebase cadenaUser = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/text/");
@@ -130,14 +131,14 @@ public class PantallaLogin extends AppCompatActivity {
     }
 
     public void onCreateUser(View view) {
-                Intent act2 = new Intent(this, createUser.class);
+        Intent act2 = new Intent(this, createUser.class);
         startActivity(act2);
     }
 
     public void onLogIn(View view) {
-        //ESTO SOLAPA UN USUARIO ANTERIOR
+        //ESTO SOLAPA UN USUARIO ANTERIOR--------------------------------------
         //intro usuario
-        new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user")
+        /*new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user")
                 //.push()
                 .child("userLog")
                 .child("userName")
@@ -150,8 +151,21 @@ public class PantallaLogin extends AppCompatActivity {
                 .child("userLog")
                 .child("password")
                 .setValue(passwordUser.getText().toString());
-        System.out.println("USUARIO INTRO: "+passwordUser);
-
+        System.out.println("USUARIO INTRO: "+passwordUser);*/
+        //FIN SOLAPAR--------------------------------------------------------------------------
+        //CREAR NUEVO USUARIO********************************************************
+        Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user");
+        String strUserName = userName.getText().toString();
+        String strPassword = passwordUser.getText().toString();
+        Firebase userRef = firebase.child("userLog_"+strUserName);
+        User user = new User();
+        user.setUserName(strUserName);
+        user.setPassword(strPassword);
+        System.out.println("USUARI: " + user.getUserName());
+        System.out.println("PASSWORD: "+user.getPassword());
+        userRef.child("userName").setValue(user.getUserName());
+        userRef.child("password").setValue(user.getPassword());
+        //FIN CREAR NUEVO USER**********************************************************
         //te manda a menú
         Intent act2 = new Intent(this, MenuPrincipalUsuario.class);
         startActivity(act2);

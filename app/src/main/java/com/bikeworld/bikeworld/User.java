@@ -1,13 +1,5 @@
 package com.bikeworld.bikeworld;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 /**
  * Created by enric on 2/12/15.
  */
@@ -29,7 +21,7 @@ public class User {
     }
 
     public String getResulName() {
-        peticio();
+        //peticio();
         return resulName;
     }
 
@@ -60,7 +52,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+/*
     public String getHTML(String urlToRead) throws Exception{
         StringBuilder result = new StringBuilder();
         URL url = new URL(urlToRead);
@@ -75,7 +67,7 @@ public class User {
         return result.toString();//retorna un JSON
     }
 
-    public void peticio(){
+    /*public void peticio(){
         System.out.println("Entra a PETICIO");
         resulName = "hola ke ase";
 
@@ -157,9 +149,9 @@ public class User {
 
             minimaArrayList.add(temp.get("min")+"\n");
             maximaArrayList.add(temp.get("max")+"\n");
-            fechaArrayList.add((diaInt+i)+"/"+mes+"/"+annio+"\n");*/
+            fechaArrayList.add((diaInt+i)+"/"+mes+"/"+annio+"\n");
 
-        }
+        }*/
 
     }
 

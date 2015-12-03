@@ -15,4 +15,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_pantalla_login">PantallaLogin</string>
+    <string name="title_activity_menu_principal_usuario">MenuPrincipalUsuario</string>
+    <string name="title_activity_create_user">createUser</string>
 </resources>

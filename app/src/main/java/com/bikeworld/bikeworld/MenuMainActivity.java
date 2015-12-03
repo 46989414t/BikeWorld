@@ -92,7 +92,9 @@ public class MenuMainActivity extends AppCompatActivity {
 
     }
     public void onCambioToUser(View v){
-        Intent act2 = new Intent(this, LoginActivity.class);
+        /*Intent act2 = new Intent(this, LoginActivity.class);
+        startActivity(act2);*/
+        Intent act2 = new Intent(this, PantallaLogin.class);
         startActivity(act2);
     }
 

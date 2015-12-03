@@ -33,81 +33,11 @@ public class PantallaLogin extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.introUserName);
         passwordUser = (EditText) findViewById(R.id.introPasswordUser);
 
-        //String strUserName = introUserName.get;
-
-        //User user = new User();
-
-        //user.setUserName(userName.getText().toString());
-        //user.setPassword(passwordUser.getText().toString());
-
         // Use Firebase to populate the list.
         Firebase.setAndroidContext(this);
         Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user");
 
-        /*System.out.println("RESULNAME: " + user.resulName);
-        System.out.println("RESULPASSWORD: "+user.resulPassword);
-        System.out.println("RESULNAME2: " + user.getResulName());*/
-
         getDatos();
-        /*Firebase cadenaUser = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/text/");
-        System.out.println(cadenaUser);
-        JSONObject object = null;
-        try {
-            object = new JSONObject(cadenaUser.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            JSONObject resultado = (JSONObject) object.get("userName");
-            System.out.println("RESULTADO USE: "+resultado);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        /*cadenaUser.child("userName").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<Object, Map<String, Object>> data =
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });*/
-
-        /*new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/text")
-                .addChildEventListener(new ChildEventListener() {
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        //adapter.add((String) dataSnapshot.child("text").getValue());
-                        System.out.println("entra en new Firebase");
-                        dataSnapshot.child("userName").getValue();
-                        System.out.println("USERNAME: " + dataSnapshot.child("userName").getValue());
-                        dataSnapshot.child("password").getValue();
-                        System.out.println("PASSWORD: "+dataSnapshot.child("password").getValue());
-                        //userName.addTextChangedListener((String) dataSnapshot.child("userName"));
-                    }
-
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-                        // adapter.remove((String) dataSnapshot.child("text").getValue());
-                    }
-
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    public void onCancelled(FirebaseError firebaseError) {
-                    }
-                });*/
-
-
-
-
-        //userName.add((String))
-
-
-
 
     }
 
@@ -171,11 +101,4 @@ public class PantallaLogin extends AppCompatActivity {
         startActivity(act2);
     }
 
-    /*public void onUserLog(View view) {
-        new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/")
-                .push()
-                .child("text")
-                .setValue(userName.getText().toString());
-        System.out.println("USUARIO INTRO: "+userName);
-    }*/
 }

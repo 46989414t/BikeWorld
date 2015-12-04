@@ -18,4 +18,5 @@
     <string name="title_activity_pantalla_login">PantallaLogin</string>
     <string name="title_activity_menu_principal_usuario">MenuPrincipalUsuario</string>
     <string name="title_activity_create_user">createUser</string>
+    <string name="title_activity_user_profile">UserProfile</string>
 </resources>

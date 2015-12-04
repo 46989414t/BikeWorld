@@ -6,27 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 public class MenuMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_menu_main);
+        setContentView(R.layout.activity_menu_main);
 
         // Get ListView object from xml
-        final ListView listView = (ListView) findViewById(R.id.listView);
+       /* final ListView listView = (ListView) findViewById(R.id.listView);
 
         // Create a new Adapter
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
@@ -88,7 +77,7 @@ public class MenuMainActivity extends AppCompatActivity {
                             }
                         });
             }
-        });
+        });*/
 
     }
     public void onCambioToUser(View v){

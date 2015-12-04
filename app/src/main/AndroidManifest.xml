@@ -70,6 +70,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bikeworld.bikeworld.MenuMainActivity" />
         </activity>
+        <activity
+            android:name=".UserProfile"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName=".MenuPrincipalUsuario"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.MenuPrincipalUsuario" />
+        </activity>
     </application>
 
 </manifest>

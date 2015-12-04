@@ -25,6 +25,8 @@ public class PantallaLogin extends AppCompatActivity {
 
     //URL: https://dazzling-inferno-4414.firebaseio.com/
     //chuleta: https://www.firebase.com/docs/android/guide/saving-data.html
+    //chuleta2: http://www.ignacionario.com/2011/03/android-iv-diseno-de-layouts-o.html
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

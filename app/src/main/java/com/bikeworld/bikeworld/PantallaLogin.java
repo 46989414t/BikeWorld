@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -49,7 +50,7 @@ public class PantallaLogin extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<Object, Map<String, Object>> data = (Map<Object, Map<String, Object>>) dataSnapshot.getValue();
-                System.out.println("DATA: "+data);
+                System.out.println("DATA: " + data);
 
 
             }
@@ -67,24 +68,52 @@ public class PantallaLogin extends AppCompatActivity {
     }
 
     public void onLogIn(View view) {
-        String strUserName = userName.getText().toString();
-        String strPassword = passwordUser.getText().toString();
+        final String strUserName = userName.getText().toString();
+        final String strPassword = passwordUser.getText().toString();
         //para hacer los gets
-        Firebase referencia = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/");
-        referencia.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("DATOS PARA EL LOGIN"+dataSnapshot.getValue());
-                String dataLogin = dataSnapshot.getValue().toString();
+        try {
+            final Firebase referencia = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/userLog_" + strUserName);
+            referencia.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    try{
+                        System.out.println("DATOS PARA EL LOGIN" + dataSnapshot.getValue());
+                        String dataLogin = dataSnapshot.getValue().toString();
+                        System.out.println("DATALOGIN: " + dataLogin);
+                        //comprueba que el usuario i password coincidan
+                        if (dataLogin.contains(strUserName) && dataLogin.contains(strPassword)) {
+                            System.out.println("usuari i password correcte");
+                            enviarAlMenu();
+                        } else {
+                            System.out.println("password o usuario incorrectos");
+                            Toast.makeText(getApplicationContext(), "Password or User incorrect",
+                                    Toast.LENGTH_SHORT).show();
+                        }
 
-            }
+                    }catch (Exception e){
+                        System.out.println("password o usuario incorrectos");
+                        Toast.makeText(getApplicationContext(), "Password or User incorrect",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
 
-            }
-        });
+                }
 
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+        }//Final TRY
+        catch (Exception e){
+            System.out.println("password o usuario incorrectos");
+            Toast.makeText(getApplicationContext(), "Password or User incorrect",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+    public void enviarAlMenu(){
         Intent act2 = new Intent(this, MenuPrincipalUsuario.class);
         startActivity(act2);
     }

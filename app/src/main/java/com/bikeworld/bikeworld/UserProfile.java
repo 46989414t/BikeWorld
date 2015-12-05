@@ -17,7 +17,7 @@ public class UserProfile extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String[] myStringArray={"A", "B", "C", "D", "e", "f", "g", "h",};
+        /*String[] myStringArray={"A", "B", "C", "D", "e", "f", "g", "h",};
 
         listaElementos = (ListView) findViewById(R.id.listView);
         adaptador =  new ArrayAdapter<String>(
@@ -25,7 +25,7 @@ public class UserProfile extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 myStringArray);
 
-        listaElementos.setAdapter(adaptador);
+        listaElementos.setAdapter(adaptador);*/
 
     }
 

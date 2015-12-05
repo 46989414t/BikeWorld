@@ -1,5 +1,6 @@
 package com.bikeworld.bikeworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -69,5 +70,10 @@ public class MenuPrincipalUsuario extends AppCompatActivity {
 
 
     public void onEnviarAlMenuAsignado(View view) {
+    }
+
+    public void onGoToPerfil(View view) {
+        Intent act2 = new Intent(this, UserProfile.class);
+        startActivity(act2);
     }
 }

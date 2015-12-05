@@ -1,64 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ListView_listado"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.bikeworld.bikeworld.MenuPrincipalUsuario"
-    tools:showIn="@layout/activity_menu_principal_usuario">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView5" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginTop="100dp">
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:id="@+id/imageView"
-            android:background="#e45d5d" />
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:id="@+id/imageView2"
-            android:background="#4a6882"
-            android:layout_marginLeft="30dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:id="@+id/imageView3"
-            android:background="#888553" />
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:id="@+id/imageView4"
-            android:background="#18e523"
-            android:layout_marginLeft="30dp" />
-    </LinearLayout>
-
-</LinearLayout>
+    android:layout_height="match_parent" >
+</ListView>

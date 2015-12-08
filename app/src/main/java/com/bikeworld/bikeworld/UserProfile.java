@@ -1,5 +1,6 @@
 package com.bikeworld.bikeworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -35,5 +36,7 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void onGoToMyVideos(View view) {
+        Intent act2 = new Intent(this, MyVideos.class);
+        startActivity(act2);
     }
 }

@@ -14,22 +14,72 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:background="#546E7A">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Video URL"
-            android:id="@+id/textView19" />
-
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/idURL"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Title:"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/idTitulo" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Video URL:"
+                android:id="@+id/textView19"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/idURL"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/Description:"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/idDescription" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -40,14 +90,16 @@
             android:layout_below="@+id/idURL"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:onClick="onReproducir" />
-
+            android:onClick="onReproducir"
+            android:layout_marginTop="85dp"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/listaVideos"
-        android:layout_below="@+id/linearLayout" />
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="45dp" />
 
 </RelativeLayout>

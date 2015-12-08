@@ -24,6 +24,10 @@ public class MyVideos extends UserProfile {
     public String strUrl;
     Button viewVideoButton;
 
+    public EditText titulo;
+    public EditText descripcion;
+    public String strTitulo;
+    public String strDescripcion;
 
 
 
@@ -39,8 +43,12 @@ public class MyVideos extends UserProfile {
 
 
         url = (EditText) findViewById(R.id.idURL);
+        titulo=(EditText) findViewById(R.id.idTitulo);
+        descripcion = (EditText) findViewById(R.id.idDescription);
         viewVideoButton = (Button) findViewById(R.id.button3);
         strUrl = url.getText().toString();
+        strTitulo=titulo.getText().toString();
+        strDescripcion=descripcion.getText().toString();
 
         VideoObject video1=new VideoObject(user.getUserName(),user.getPassword(),"fecha1", "https://www.youtube.com/watch?v=yT7XYeGemUw", "Titulo video 1", "Descripcion video1");
         VideoObject video2=new VideoObject(user.getUserName(),user.getPassword(),"fecha2", "https://vimeo.com/113199166", "Titulo video 2", "Descripcion video1");

@@ -14,14 +14,15 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import java.util.Map;
-
 public class PantallaLogin extends AppCompatActivity {
 
     public EditText userName;
     public EditText passwordUser;
     public Button introPasswordUser;
     public Button buttonCreateNewUser;
+
+    //crea el objeto para ir acumulando los datos del usuario
+    public static User user;
 
     //URL: https://dazzling-inferno-4414.firebaseio.com/
     //chuleta: https://www.firebase.com/docs/android/guide/saving-data.html
@@ -41,11 +42,13 @@ public class PantallaLogin extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user");
 
-        getDatos();
+
+
+        //getDatos();
 
     }
 
-    public void getDatos(){
+    /*public void getDatos(){
         //accedo a los datos que hay dentro de user
         Firebase myFirebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/");
         myFirebase.child("user").addValueEventListener(new ValueEventListener() {
@@ -62,7 +65,7 @@ public class PantallaLogin extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     public void onCreateUser(View view) {
         Intent act2 = new Intent(this, createUser.class);
@@ -72,6 +75,14 @@ public class PantallaLogin extends AppCompatActivity {
     public void onLogIn(View view) {
         final String strUserName = userName.getText().toString();
         final String strPassword = passwordUser.getText().toString();
+
+        user = new User();
+        String obUserName = strUserName;
+        user.setUserName(obUserName);
+        user.setPassword(strPassword);
+
+        System.out.println("l'usuari es diu: "+strUserName);
+
         //para hacer los gets
         try {
             final Firebase referencia = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/userLog_" + strUserName);

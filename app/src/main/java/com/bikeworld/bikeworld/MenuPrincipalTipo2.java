@@ -2,11 +2,11 @@ package com.bikeworld.bikeworld;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class MenuPrincipalTipo2 extends AppCompatActivity {
+public class MenuPrincipalTipo2 extends PantallaLogin{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +14,9 @@ public class MenuPrincipalTipo2 extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal_tipo2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //User a = new User();
+        System.out.println("LLega el menu principal de usuario: " + user.getUserName());
 
     }
 

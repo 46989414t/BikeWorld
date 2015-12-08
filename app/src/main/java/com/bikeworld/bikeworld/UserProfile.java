@@ -2,15 +2,16 @@ package com.bikeworld.bikeworld;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfile extends MenuPrincipalTipo2 {
     public ListView listaElementos;
     public ArrayAdapter<String> adaptador;
+
+    //public User usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,8 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        System.out.println("Llega al PERFIL de: "+ user.getUserName());
 
         /*String[] myStringArray={"A", "B", "C", "D", "e", "f", "g", "h",};
 

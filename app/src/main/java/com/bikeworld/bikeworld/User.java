@@ -4,8 +4,7 @@ package com.bikeworld.bikeworld;
  * Created by enric on 2/12/15.
  */
 public class User {
-    public String resulName = "";
-    public String resulPassword = "";
+
 
     public String userName;
     public String password;
@@ -18,23 +17,6 @@ public class User {
     public User() {
         /*this.userName = userName;
         this.password = password;*/
-    }
-
-    public String getResulName() {
-        //peticio();
-        return resulName;
-    }
-
-    public void setResulName(String resulName) {
-        this.resulName = resulName;
-    }
-
-    public String getResulPassword() {
-        return resulPassword;
-    }
-
-    public void setResulPassword(String resulPassword) {
-        this.resulPassword = resulPassword;
     }
 
     public String getUserName() {

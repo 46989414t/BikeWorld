@@ -3,6 +3,7 @@ package com.bikeworld.bikeworld;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -30,5 +31,9 @@ public class UserProfile extends AppCompatActivity {
     }
 
 
+    public void onGoToMyPhotos(View view) {
+    }
 
+    public void onGoToMyVideos(View view) {
+    }
 }

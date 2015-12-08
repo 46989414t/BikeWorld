@@ -13,8 +13,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_marginTop="110dp"
+        android:background="#546e7a">
 
         <LinearLayout
             android:orientation="vertical"
@@ -27,46 +29,51 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="My Photos"
                 android:id="@+id/textView12"
-                android:layout_marginTop="100dp" />
+                android:textColor="@android:color/white" />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/imageButton"
-                android:background="#a9f686" />
+                android:id="@+id/buttonMyPhotos"
+                android:background="@drawable/my_photos"
+                android:onClick="onGoToMyPhotos" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="My Videos"
-                android:id="@+id/textView13" />
+                android:id="@+id/textView13"
+                android:textColor="@android:color/white" />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/imageButton2"
-                android:background="#b3c3f6" />
+                android:id="@+id/buttonMyVideos"
+                android:background="@drawable/my_videos"
+                android:onClick="onGoToMyVideos" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="My Routes"
-                android:id="@+id/textView14" />
+                android:id="@+id/textView14"
+                android:textColor="@android:color/white" />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:id="@+id/imageButton3"
-                android:background="#f9f8ab" />
+                android:background="@drawable/my_routes" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/textView15" />
+                android:id="@+id/textView15"
+                android:textColor="@android:color/white" />
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -86,8 +93,8 @@
         android:background="#546E7A">
 
         <ImageView
-            android:layout_width="85dp"
-            android:layout_height="85dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imageView"
             android:background="#f67d7d" />
 

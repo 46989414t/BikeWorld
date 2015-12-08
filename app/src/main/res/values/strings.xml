@@ -19,4 +19,6 @@
     <string name="title_activity_menu_principal_usuario">MenuPrincipalUsuario</string>
     <string name="title_activity_create_user">createUser</string>
     <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_menu_principal_tipo2">MenuPrincipalTipo2</string>
+    <string name="title_activity_my_videos">MyVideos</string>
 </resources>

@@ -116,7 +116,7 @@ public class PantallaLogin extends AppCompatActivity {
 
     }
     public void enviarAlMenu(){
-        Intent act2 = new Intent(this, MenuPrincipalUsuario.class);
+        Intent act2 = new Intent(this, MenuPrincipalTipo2.class);
         startActivity(act2);
     }
 

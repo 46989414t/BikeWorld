@@ -79,6 +79,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bikeworld.bikeworld.MenuPrincipalUsuario" />
         </activity>
+        <activity
+            android:name=".MenuPrincipalTipo2"
+            android:label="@string/title_activity_menu_principal_tipo2"
+            android:parentActivityName=".PantallaLogin"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.PantallaLogin" />
+        </activity>
+        <activity
+            android:name=".MyVideos"
+            android:label="@string/title_activity_my_videos"
+            android:parentActivityName=".UserProfile"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.UserProfile" />
+        </activity>
     </application>
 
 </manifest>

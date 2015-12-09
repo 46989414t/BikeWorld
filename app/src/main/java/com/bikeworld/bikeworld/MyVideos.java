@@ -22,6 +22,8 @@ public class MyVideos extends UserProfile {
     //https://www.youtube.com/watch?v=yT7XYeGemUw
     //http://androideity.com/2012/05/13/reproducir-videos-de-youtube-desde-tu-app-android/
 
+    //comprobar proyecto carlos: https://github.com/lawer/RottenTomatoesClient/blob/f8e78c5c9828cd661ad64f203fb5f964e750fac0/app/src/main/java/poblenou/rottentomatoesclient/MoviesAdapter.java
+
     public ArrayList<VideoObject> datos;
 
     private ListView lista;

@@ -64,17 +64,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
-                android:id="@+id/Description:"
+                android:text="Description:"
                 android:textColor="@android:color/white" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idDescription" />
+
         </LinearLayout>
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -83,14 +87,14 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Add"
             android:id="@+id/button3"
             android:layout_below="@+id/idURL"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:onClick="onReproducir"
+            android:onClick="onAddVideo"
             android:layout_marginTop="85dp"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>

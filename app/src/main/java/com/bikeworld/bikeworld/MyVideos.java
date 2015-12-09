@@ -11,6 +11,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MyVideos extends UserProfile {
@@ -58,6 +63,41 @@ public class MyVideos extends UserProfile {
         datos.add(video2);
         //datos.add(reportajes);
 
+
+        String logUser = user.getUserName().toString();
+        String userBBDD = "userLog_"+logUser;
+
+        //para hacer los gets
+
+            final Firebase referencia = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/"+userBBDD+"/userMenu/userProfile/myVideos/");
+            referencia.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    /*System.out.println("DATOS PARA VIDEOS" + dataSnapshot.getValue());
+                    String data = dataSnapshot.getValue().toString();
+                    System.out.println("VIDEOS: " + data);
+                    //extraer titulos
+                    String[] arrayTitulos = data.split(",");
+                    for (int i=0; i < arrayTitulos.length; i++){
+                        System.out.println(arrayTitulos);
+                    }*/
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        VideoObject video = postSnapshot.getValue(VideoObject.class);
+                        System.out.println(video);
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+
+
+
         lista = (ListView) findViewById(R.id.listaVideos);
         lista.setAdapter(new Lista_adaptador(this, R.layout.estilo_my_video_list, datos) {
             @Override
@@ -65,15 +105,15 @@ public class MyVideos extends UserProfile {
                 if (entrada != null) {
                     TextView texto_superior_entrada = (TextView) view.findViewById(R.id.idTitulo);
                     if (texto_superior_entrada != null)
-                        texto_superior_entrada.setText(((VideoObject) entrada).getTitulo());
+                        texto_superior_entrada.setText(((VideoObject) entrada).getTitle());
 
                     TextView texto_inferior_entrada = (TextView) view.findViewById(R.id.idDescripcion);
                     if (texto_inferior_entrada != null)
-                        texto_inferior_entrada.setText(((VideoObject) entrada).getDescripcion());
+                        texto_inferior_entrada.setText(((VideoObject) entrada).getDescription());
 
                     TextView imagen_entrada = (TextView) view.findViewById(R.id.idFecha);
                     if (imagen_entrada != null)
-                        imagen_entrada.setText(((VideoObject) entrada).getFecha());
+                        imagen_entrada.setText(((VideoObject) entrada).getDate());
                 }
             }
         });
@@ -92,17 +132,50 @@ public class MyVideos extends UserProfile {
         });
 
 
-        viewVideoButton.setOnClickListener(new View.OnClickListener(){
-
+        /*viewVideoButton.setOnClickListener(new View.OnClickListener(){
+            //strUrl = url.
 
             @Override
             public void onClick(View v) {
-                VideoObject video3 = new VideoObject(user.userName,user.getPassword(), "fecha nueva", "https://www.youtube.com/watch?v=ZnYoKMzeVgo", "Titulo nuevo", "descripcion nueva");
+
+                VideoObject video3 = new VideoObject(user.userName,user.getPassword(), "date nueva", "https://www.youtube.com/watch?v=ZnYoKMzeVgo", "Titulo nuevo", "description nueva");
+
                 datos.add(video3);
 
             }
-        });
+        });*/
 
     }
 
+    public void onAddVideo(View view) {
+        url = (EditText) findViewById(R.id.idURL);
+        titulo=(EditText) findViewById(R.id.idTitulo);
+        descripcion = (EditText) findViewById(R.id.idDescription);
+        viewVideoButton = (Button) findViewById(R.id.button3);
+        strUrl = url.getText().toString();
+        strTitulo=titulo.getText().toString();
+        strDescripcion=descripcion.getText().toString();
+
+        String logUser = user.getUserName().toString();
+        String userBBDD = "userLog_"+logUser;
+        //AÑADIR VIDEO A BBDD********************************************************
+        //Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/"+userBBDD+"/userMenu/userProfile/myVideos/videoObject_"+strTitulo);
+        Firebase profile = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/"+userBBDD+"/userMenu/userProfile/");
+        Firebase videos = profile.child("myVideos");
+        Firebase newVideo = videos.child("videoObject_" + strTitulo);
+
+        //crea el nuevo video
+        VideoObject videoObject = new VideoObject(user.getUserName(),user.getPassword(),"falta extraer date", strUrl,strTitulo,strDescripcion);
+        newVideo.setValue(videoObject);
+
+//        firebase.child("date").setValue(videoObject.getDate());
+//        firebase.child("description").setValue(videoObject.getDescription());
+//        firebase.child("title").setValue(videoObject.getTitle());
+//        firebase.child("url").setValue(videoObject.getUrl());
+
+        System.out.println("objeto de video añadido a la BBDD");
+        datos.add(videoObject);
+        System.out.println("El video añadido es: "+videoObject.getTitle());
+
+    }
 }

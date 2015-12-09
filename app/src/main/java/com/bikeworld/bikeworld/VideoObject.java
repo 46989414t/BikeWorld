@@ -4,32 +4,35 @@ package com.bikeworld.bikeworld;
  * Created by enric on 8/12/15.
  */
 public class VideoObject extends User{
-    public String fecha;
+    public String date;
     public String url;
-    public String titulo;
-    public String descripcion;
+    public String title;
+    public String description;
 
-    public VideoObject(String userName, String password, String fecha, String url, String titulo, String descripcion) {
+    public VideoObject(String userName, String password, String date, String url, String title, String description) {
         super(userName, password);
-        this.fecha = fecha;
+        this.date = date;
         this.url = url;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
+        this.title = title;
+        this.description = description;
+    }
+    public VideoObject(){
+
     }
 
-    public VideoObject(String fecha, String url, String titulo, String descripcion) {
-        this.fecha = fecha;
+    public VideoObject(String date, String url, String title, String description) {
+        this.date = date;
         this.url = url;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
+        this.title = title;
+        this.description = description;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getDate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getUrl() {
@@ -40,19 +43,29 @@ public class VideoObject extends User{
         this.url = url;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "VideoObject{" +
+                "date='" + date + '\'' +
+                ", url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

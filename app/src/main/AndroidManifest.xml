@@ -4,8 +4,8 @@
     package="com.bikeworld.bikeworld" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--permiso de wifi state-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- permiso de wifi state -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -94,16 +94,24 @@
         </activity>
         <activity
             android:name=".MyVideos"
+            android:configChanges="orientation"
             android:label="@string/title_activity_my_videos"
             android:parentActivityName=".UserProfile"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bikeworld.bikeworld.UserProfile" />
         </activity>
+        <activity android:name="com.keyes.youtube.OpenYouTubePlayerActivity" />
         <activity
-            android:name="com.keyes.youtube.OpenYouTubePlayerActivity"></activity>
+            android:name=".VideoViewMostrar"
+            android:label="@string/title_activity_video_view"
+            android:parentActivityName=".MyVideos"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.MyVideos" />
+        </activity>
     </application>
 
 </manifest>

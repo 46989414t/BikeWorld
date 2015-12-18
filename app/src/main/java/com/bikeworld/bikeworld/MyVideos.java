@@ -1,6 +1,7 @@
 package com.bikeworld.bikeworld;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.Calendar;
 public class MyVideos extends UserProfile {
     //https://www.youtube.com/watch?v=yT7XYeGemUw
     //http://androideity.com/2012/05/13/reproducir-videos-de-youtube-desde-tu-app-android/
+    //http://www.webempresa.com/blog/item/1873-como-obtener-la-api-key-de-youtube-sin-aburrirse-en-el-proceso.html
 
     //comprobar proyecto carlos: https://github.com/lawer/RottenTomatoesClient/blob/f8e78c5c9828cd661ad64f203fb5f964e750fac0/app/src/main/java/poblenou/rottentomatoesclient/MoviesAdapter.java
 
@@ -84,15 +86,15 @@ public class MyVideos extends UserProfile {
             public void onItemClick(AdapterView<?> pariente, View view, int posicion, long id) {
                 VideoObject elegido = (VideoObject) pariente.getItemAtPosition(posicion);
 
-                //String urlSelecc = elegido.getUrl();
+                String urlSelecc = elegido.getUrl();
 
-                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
                 //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc), MyVideos.this, OpenYouTubePlayerActivity.class);
-                //startActivity(i);
+                startActivity(i);
                 //Uri uri = Uri.parse(urlSelecc);
                 //String videoId = uri.getQueryParameter("v").toString();
-                /*Intent lVideoIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("ytv://" + id), MyVideos.this, OpenYouTubePlayerActivity.class);
-                startActivity(lVideoIntent);*/
+                //Intent lVideoIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("ytv://" + id), MyVideos.this, OpenYouTubePlayerActivity.class);
+                //startActivity(lVideoIntent);
                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc)));
                 /*MediaPlayer mp = new MediaPlayer();
                 try {
@@ -105,9 +107,10 @@ public class MyVideos extends UserProfile {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }*/
-                Intent intent = new Intent(MyVideos.this, VideoViewMostrar.class);
-                startActivity(intent);
-
+                /*Intent intent = new Intent(MyVideos.this, VideoViewMostrar.class);
+                startActivity(intent);*/
+                /*Intent videoRep = new Intent(null, Uri.parse("ytv://" + "otKdLK2Qvwg"), MyVideos.this, OpenYouTubePlayerActivity.class);
+                startActivity(videoRep);*/
 
 
             }
@@ -123,7 +126,7 @@ public class MyVideos extends UserProfile {
         strUrl = url.getText().toString();
         strTitulo=titulo.getText().toString();
         strDescripcion=descripcion.getText().toString();
-        String fechaActual = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        String fechaActual = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 
         String logUser = user.getUserName().toString();
         String userBBDD = "userLog_"+logUser;

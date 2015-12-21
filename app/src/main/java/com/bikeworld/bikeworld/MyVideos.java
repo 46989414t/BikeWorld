@@ -1,5 +1,7 @@
 package com.bikeworld.bikeworld;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,11 +49,22 @@ public class MyVideos extends UserProfile {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final AlertDialog.Builder dialogoEliminar = new AlertDialog.Builder(this);
+        dialogoEliminar.setTitle("Eliminar");
+        dialogoEliminar.setMessage("¿Desea eliminar el elemento seleccionado?");
+        /*dialogoEliminar.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eliminar();
+            }
+        });*/
+
         System.out.println("Llega a myVideos de: " + user.getUserName());
 
         datos = new ArrayList<VideoObject>();
 
-        String logUser = user.getUserName().toString();
+
+        final String logUser = user.getUserName().toString();
         String userBBDD = "userLog_"+logUser;
 
         //para hacer los gets
@@ -62,14 +75,14 @@ public class MyVideos extends UserProfile {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                         VideoObject video = postSnapshot.getValue(VideoObject.class);
-                        datos.add(video);
+                        if(video.getUserName().equals(logUser)){
+                            datos.add(video);
+                        }
+                        //datos.add(video);
                         System.out.println("Los videos guardados" + video);
                         System.out.println("Los videos a mostrar: "+datos);
                     }
-
-
                 }
-
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
 
@@ -83,36 +96,32 @@ public class MyVideos extends UserProfile {
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> pariente, View view, int posicion, long id) {
-                VideoObject elegido = (VideoObject) pariente.getItemAtPosition(posicion);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                VideoObject elegido = (VideoObject) parent.getItemAtPosition(position);
                 String urlSelecc = elegido.getUrl();
 
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
-                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc), MyVideos.this, OpenYouTubePlayerActivity.class);
                 startActivity(i);
-                //Uri uri = Uri.parse(urlSelecc);
-                //String videoId = uri.getQueryParameter("v").toString();
-                //Intent lVideoIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("ytv://" + id), MyVideos.this, OpenYouTubePlayerActivity.class);
-                //startActivity(lVideoIntent);
-               // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc)));
-                /*MediaPlayer mp = new MediaPlayer();
-                try {
-                    mp.setDataSource(urlSelecc);
-                    mp.setScreenOnWhilePlaying(true);
-                    //mp.setDisplay(holder);
-                    mp.prepare();
-                    mp.start();
-                    mp.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-                /*Intent intent = new Intent(MyVideos.this, VideoViewMostrar.class);
-                startActivity(intent);*/
-                /*Intent videoRep = new Intent(null, Uri.parse("ytv://" + "otKdLK2Qvwg"), MyVideos.this, OpenYouTubePlayerActivity.class);
-                startActivity(videoRep);*/
 
+            }
+        });
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final VideoObject elegido = (VideoObject) parent.getItemAtPosition(position);
+                System.out.println("Llega al click largo con Objeto seleccionado: " + elegido);
+                dialogoEliminar.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        datos.remove(elegido);
+                    }
+                });
+                dialogoEliminar.show();
 
+                //datos.remove(elegido);
+
+                return false;
             }
         });
 

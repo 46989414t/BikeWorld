@@ -268,8 +268,10 @@ public class MyVideos extends UserProfile {
         newVideo.setValue(videoObject);
 
         System.out.println("objeto de video añadido a la BBDD");
+/*
         datos.add(videoObject);
         adapter.notifyDataSetChanged();
+*/
         System.out.println("El video añadido es: " + videoObject.getTitle());
         System.out.println("imprimir DATOS: " + datos);
 

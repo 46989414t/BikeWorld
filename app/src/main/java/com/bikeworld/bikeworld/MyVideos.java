@@ -3,7 +3,6 @@ package com.bikeworld.bikeworld;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,6 +28,8 @@ public class MyVideos extends UserProfile {
 
     //comprobar proyecto carlos: https://github.com/lawer/RottenTomatoesClient/blob/f8e78c5c9828cd661ad64f203fb5f964e750fac0/app/src/main/java/poblenou/rottentomatoesclient/MoviesAdapter.java
 
+    //apiYoutube: AIzaSyCTgsEtqcWmE8NTsS0gKT_ZAmOqsq9L1Tk
+
     public ArrayList<VideoObject> datos;
 
     public VideosAdapterList adapter;
@@ -42,6 +43,9 @@ public class MyVideos extends UserProfile {
     public EditText descripcion;
     public String strTitulo;
     public String strDescripcion;
+
+    public String apiKeyYoutubue = "AIzaSyCTgsEtqcWmE8NTsS0gKT_ZAmOqsq9L1Tk";
+    public String videoId = "n62Zpz0qdSI";
 
 
 
@@ -236,8 +240,9 @@ public class MyVideos extends UserProfile {
                 VideoObject elegido = (VideoObject) parent.getItemAtPosition(position);
                 String urlSelecc = elegido.getUrl();
 
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
-                startActivity(i);
+                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
+                //startActivity(i);
+                goToVideoView();
 
             }
         });
@@ -276,5 +281,9 @@ public class MyVideos extends UserProfile {
         System.out.println("imprimir DATOS: " + datos);
 
 
+    }
+    public void goToVideoView(){
+        Intent act2 = new Intent(this, VideoViewMostrar.class);
+        startActivity(act2);
     }
 }

@@ -2,6 +2,7 @@ package com.bikeworld.bikeworld;
 
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -11,26 +12,29 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class VideoViewMostrar extends MyVideos implements
         YouTubePlayer.OnInitializedListener{
 
-    public static final String API_KEY = "AIzaSyCTgsEtqcWmE8NTsS0gKT_ZAmOqsq9L1Tk";
-    public static final String VIDEO_ID = "n62Zpz0qdSI";
+    public static String API_KEY = "AIzaSyCTgsEtqcWmE8NTsS0gKT_ZAmOqsq9L1Tk";
+    public static String VIDEO_ID = "MWK_EGgycio";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("llega al video Mostrar");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_video_view);
+        setContentView(R.layout.activity_player);
 
-        YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.youtubeplayerview);
+        YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.player_view);
         youTubePlayerView.initialize(API_KEY, this);
 
     }
 
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.cueVideo(VIDEO_ID);
+        youTubePlayer.cueVideo(getIntent().getStringExtra(VIDEO_ID));
     }
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        //Toast.makeText(this, "no se puede mostrar", Toast.LENGTH_LONG);
+        Toast.makeText(this, getString(R.string.error_field_required), Toast.LENGTH_LONG).show();
 
     }
 

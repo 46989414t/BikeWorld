@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bikeworld.bikeworld" >
 
-    <uses-sdk android:minSdkVersion="8"/>
+    <uses-sdk android:minSdkVersion="8" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- permiso de wifi state -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,6 +15,9 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -107,6 +111,15 @@
         <activity
             android:name=".VideoViewMostrar"
             android:label="@string/title_activity_video_view"
+            android:parentActivityName=".MyVideos"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.MyVideos" />
+        </activity>
+        <activity
+            android:name=".Player"
+            android:label="@string/title_activity_player"
             android:parentActivityName=".MyVideos"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data

@@ -17,9 +17,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MyVideos extends UserProfile {
     //https://www.youtube.com/watch?v=yT7XYeGemUw
@@ -250,7 +248,7 @@ public class MyVideos extends UserProfile {
     }
 
     public void onAddVideo(View view) {
-
+/*
         url = (EditText) findViewById(R.id.idURL);
         titulo=(EditText) findViewById(R.id.idTitulo);
         descripcion = (EditText) findViewById(R.id.idDescription);
@@ -273,13 +271,13 @@ public class MyVideos extends UserProfile {
         newVideo.setValue(videoObject);
 
         System.out.println("objeto de video añadido a la BBDD");
-/*
-        datos.add(videoObject);
-        adapter.notifyDataSetChanged();
-*/
+
         System.out.println("El video añadido es: " + videoObject.getTitle());
         System.out.println("imprimir DATOS: " + datos);
-
+*/
+        System.out.println("click en add");
+        Intent act2 = new Intent(getApplicationContext(), VideoViewMostrar.class);
+        startActivity(act2);
 
     }
     public void goToVideoView(){

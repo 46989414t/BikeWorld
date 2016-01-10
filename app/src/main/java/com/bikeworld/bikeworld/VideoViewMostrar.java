@@ -9,8 +9,9 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class VideoViewMostrar extends MyVideos implements
+public class VideoViewMostrar extends UserProfile implements
         YouTubePlayer.OnInitializedListener{
+
 
     public static String API_KEY = "AIzaSyCTgsEtqcWmE8NTsS0gKT_ZAmOqsq9L1Tk";
     public static String VIDEO_ID = "MWK_EGgycio";
@@ -21,14 +22,14 @@ public class VideoViewMostrar extends MyVideos implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.player_view);
+        YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.youtube_view);
         youTubePlayerView.initialize(API_KEY, this);
 
     }
 
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.cueVideo(getIntent().getStringExtra(VIDEO_ID));
+        youTubePlayer.loadVideo(VIDEO_ID);
     }
 
     @Override

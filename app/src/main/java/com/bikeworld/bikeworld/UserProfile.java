@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 public class UserProfile extends MenuPrincipalTipo2 {
     public ListView listaElementos;
     public ArrayAdapter<String> adaptador;
+    public EditText userName;
 
     //public User usuario;
 
@@ -20,7 +22,12 @@ public class UserProfile extends MenuPrincipalTipo2 {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        System.out.println("Llega al PERFIL de: "+ user.getUserName());
+        System.out.println("Llega al PERFIL de: " + user.getUserName());
+
+        //userName = (EditText)findViewById(R.id.idUserName);
+        //userName = user.getUserName().toString();
+
+
 
         /*String[] myStringArray={"A", "B", "C", "D", "e", "f", "g", "h",};
 
@@ -39,6 +46,10 @@ public class UserProfile extends MenuPrincipalTipo2 {
     }
 
     public void onGoToMyVideos(View view) {
+        System.out.println("ir a myVideos");
+        /*Intent act2 = new Intent(this, VideoViewMostrar.class);
+        startActivity(act2);*/
+
         Intent act2 = new Intent(this, MyVideos.class);
         startActivity(act2);
     }

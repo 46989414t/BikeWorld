@@ -73,6 +73,24 @@
                 android:id="@+id/imageButton7"
                 android:background="@drawable/menu_reports"
                 android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="All videos"
+                android:id="@+id/textView20"
+                android:layout_weight="1"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/imageAllVideos"
+                android:background="#a58383"
+                android:layout_weight="1"
+                android:longClickable="true"
+                android:onClick="onAllVideos" />
         </LinearLayout>
     </ScrollView>
 

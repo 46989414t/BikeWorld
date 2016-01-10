@@ -24,4 +24,9 @@ public class MenuPrincipalTipo2 extends PantallaLogin{
         Intent act2 = new Intent(this, UserProfile.class);
         startActivity(act2);
     }
+
+    public void onAllVideos(View view) {
+        Intent act2 = new Intent(this, AllVideos.class);
+        startActivity(act2);
+    }
 }

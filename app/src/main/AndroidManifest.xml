@@ -126,6 +126,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bikeworld.bikeworld.MyVideos" />
         </activity>
+        <activity
+            android:name=".AllVideos"
+            android:label="@string/title_activity_all_videos"
+            android:parentActivityName=".MenuPrincipalTipo2"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.MenuPrincipalTipo2" />
+        </activity>
     </application>
 
 </manifest>

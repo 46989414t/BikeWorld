@@ -1,5 +1,5 @@
 package com.bikeworld.bikeworld;
-
+/*
 import android.os.Bundle;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -32,3 +32,4 @@ public class Player extends YouTubeBaseActivity implements YouTubeThumbnailView.
         //Toast.makeText(this, getString(R.string.failed), Toast.LENGTH_LONG).show();
     }
 }
+*/

@@ -3,6 +3,7 @@ package com.bikeworld.bikeworld;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,7 +18,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MyVideos extends UserProfile {
     //https://www.youtube.com/watch?v=yT7XYeGemUw
@@ -127,7 +130,7 @@ public class MyVideos extends UserProfile {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 adapter.notifyDataSetChanged();
-                System.out.println("ha actualizado los datos del adapter");
+                System.out.println("adapter.notifyDataSetChanged()");
                 /*for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     VideoObject video = postSnapshot.getValue(VideoObject.class);
                     if (video.getUserName().equals(logUser)) {
@@ -238,9 +241,9 @@ public class MyVideos extends UserProfile {
                 VideoObject elegido = (VideoObject) parent.getItemAtPosition(position);
                 String urlSelecc = elegido.getUrl();
 
-                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
-                //startActivity(i);
-                goToVideoView();
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
+                startActivity(i);
+                //goToVideoView();
 
             }
         });
@@ -248,7 +251,6 @@ public class MyVideos extends UserProfile {
     }
 
     public void onAddVideo(View view) {
-/*
         url = (EditText) findViewById(R.id.idURL);
         titulo=(EditText) findViewById(R.id.idTitulo);
         descripcion = (EditText) findViewById(R.id.idDescription);
@@ -264,7 +266,7 @@ public class MyVideos extends UserProfile {
         //Firebase firebase = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/user/"+userBBDD+"/userMenu/userProfile/myVideos/videoObject_"+strTitulo);
         Firebase profile = new Firebase("https://dazzling-inferno-4414.firebaseio.com/bikeWorld/");
         Firebase videos = profile.child("videos");
-        Firebase newVideo = videos.child("videoObject_" + strTitulo);
+        Firebase newVideo = videos.child("videoObject_" + strTitulo.replace(" ","%"));
 
         //crea el nuevo video
         VideoObject videoObject = new VideoObject(user.getUserName(),user.getPassword(),fechaActual, strUrl,strTitulo,strDescripcion);
@@ -274,10 +276,10 @@ public class MyVideos extends UserProfile {
 
         System.out.println("El video añadido es: " + videoObject.getTitle());
         System.out.println("imprimir DATOS: " + datos);
-*/
-        System.out.println("click en add");
+
+        /*System.out.println("click en add");
         Intent act2 = new Intent(getApplicationContext(), VideoViewMostrar.class);
-        startActivity(act2);
+        startActivity(act2);*/
 
     }
     public void goToVideoView(){

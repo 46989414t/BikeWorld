@@ -111,8 +111,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
-                android:id="@+id/textView6"
+                android:text="userName"
+                android:id="@+id/idUserName"
                 android:textColor="@android:color/white" />
 
             <TextView

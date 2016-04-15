@@ -5,7 +5,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bikeworld.bikeworld.LoginActivity"
+    tools:context="com.bikeworld.bikeworld.Antiguos.LoginActivity"
     android:background="#cfd8dc">
 
     <!-- Login progress -->

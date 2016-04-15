@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MenuMainActivity"
+            android:name=".Antiguos.MenuMainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -36,104 +36,114 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Antiguos.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MenuMainActivity" >
+            android:parentActivityName=".Antiguos.MenuMainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuMainActivity" />
+                android:value=".Antiguos.MenuMainActivity" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Antiguos.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MenuMainActivity"
+            android:parentActivityName=".Antiguos.MenuMainActivity"
             tools:ignore="DuplicateActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuMainActivity" />
+                android:value=".Antiguos.MenuMainActivity" />
         </activity>
         <activity
-            android:name=".PantallaLogin"
+            android:name=".Antiguos.PantallaLogin"
             android:label="@string/title_activity_pantalla_login"
-            android:parentActivityName=".MenuMainActivity"
+            android:parentActivityName=".Antiguos.MenuMainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuMainActivity" />
+                android:value=".Antiguos.MenuMainActivity" />
         </activity>
         <activity
-            android:name=".MenuPrincipalUsuario"
+            android:name=".Antiguos.MenuPrincipalUsuario"
             android:label="@string/title_activity_menu_principal_usuario"
-            android:parentActivityName=".MenuMainActivity"
+            android:parentActivityName=".Antiguos.MenuMainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuMainActivity" />
+                android:value=".Antiguos.MenuMainActivity" />
         </activity>
         <activity
-            android:name=".createUser"
+            android:name=".Antiguos.createUser"
             android:label="@string/title_activity_create_user"
-            android:parentActivityName=".MenuMainActivity"
+            android:parentActivityName=".Antiguos.MenuMainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuMainActivity" />
+                android:value=".Antiguos.MenuMainActivity" />
         </activity>
         <activity
-            android:name=".UserProfile"
+            android:name=".ObjetosAntiguos.UserProfile"
             android:label="@string/title_activity_user_profile"
-            android:parentActivityName=".MenuPrincipalUsuario"
+            android:parentActivityName=".Antiguos.MenuPrincipalUsuario"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuPrincipalUsuario" />
+                android:value=".Antiguos.MenuPrincipalUsuario" />
         </activity>
         <activity
-            android:name=".MenuPrincipalTipo2"
+            android:name=".Antiguos.MenuPrincipalTipo2"
             android:label="@string/title_activity_menu_principal_tipo2"
-            android:parentActivityName=".PantallaLogin"
+            android:parentActivityName=".Antiguos.PantallaLogin"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.PantallaLogin" />
+                android:value=".Antiguos.PantallaLogin" />
         </activity>
         <activity
-            android:name=".MyVideos"
+            android:name=".Antiguos.MyVideos"
             android:configChanges="orientation"
             android:label="@string/title_activity_my_videos"
-            android:parentActivityName=".UserProfile"
+            android:parentActivityName=".ObjetosAntiguos.UserProfile"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.UserProfile" />
+                android:value=".ObjetosAntiguos.UserProfile" />
         </activity>
         <activity android:name="com.keyes.youtube.OpenYouTubePlayerActivity" />
         <activity
-            android:name=".VideoViewMostrar"
+            android:name=".ObjetosAntiguos.VideoViewMostrar"
             android:label="@string/title_activity_video_view"
-            android:parentActivityName=".MyVideos"
+            android:parentActivityName=".Antiguos.MyVideos"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MyVideos" />
+                android:value=".Antiguos.MyVideos" />
         </activity>
         <activity
             android:name=".Player"
             android:label="@string/title_activity_player"
-            android:parentActivityName=".MyVideos"
+            android:parentActivityName=".Antiguos.MyVideos"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MyVideos" />
+                android:value=".Antiguos.MyVideos" />
         </activity>
         <activity
-            android:name=".AllVideos"
+            android:name=".Antiguos.AllVideos"
             android:label="@string/title_activity_all_videos"
-            android:parentActivityName=".MenuPrincipalTipo2"
+            android:parentActivityName=".Antiguos.MenuPrincipalTipo2"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.MenuPrincipalTipo2" />
+                android:value=".Antiguos.MenuPrincipalTipo2" />
+        </activity>
+        <activity
+            android:name=".NuevoMenuLateral"
+            android:label="@string/title_activity_nuevo_menu_lateral"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".NuevoMenuPrincipalColumnas"
+            android:label="@string/title_activity_nuevo_menu_principal_columnas"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

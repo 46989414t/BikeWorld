@@ -24,4 +24,13 @@
     <string name="title_activity_video_view">VideoView</string>
     <string name="title_activity_player">Player</string>
     <string name="title_activity_all_videos">AllVideos</string>
+    <string name="title_activity_nuevo_menu_lateral">NuevoMenuLateral</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_nuevo_menu_principal_columnas">NuevoMenuPrincipalColumnas</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

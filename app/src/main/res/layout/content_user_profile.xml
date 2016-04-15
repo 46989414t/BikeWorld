@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_user_profile"
-    tools:context="com.bikeworld.bikeworld.UserProfile"
+    tools:context="com.bikeworld.bikeworld.ObjetosAntiguos.UserProfile"
     android:background="#CFD8DC">
 
     <ScrollView

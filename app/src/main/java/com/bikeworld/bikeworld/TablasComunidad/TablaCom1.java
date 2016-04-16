@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld;
+package com.bikeworld.bikeworld.TablasComunidad;
 
 
 import android.os.Bundle;
@@ -7,14 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bikeworld.bikeworld.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentTabla2 extends Fragment {
+public class TablaCom1 extends Fragment {
 
 
-    public FragmentTabla2() {
+    public TablaCom1() {
         // Required empty public constructor
     }
 
@@ -23,7 +24,7 @@ public class FragmentTabla2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_tabla2, container, false);
+        return inflater.inflate(R.layout.fragment_tabla_com1, container, false);
     }
 
 

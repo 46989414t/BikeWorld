@@ -35,7 +35,7 @@ public class NuevoMenuPrincipalColumnas extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     public static String rutaGeneral = "https://dazzling-inferno-4414.firebaseio.com/";
-    public static NuevoUsuarioPerfil usuarioPerfil;
+    public NuevoUsuarioPerfil usuarioPerfil;
     public static String nombreUsuario;
     public static String emailUsuario;
     @Override
@@ -64,7 +64,34 @@ public class NuevoMenuPrincipalColumnas extends AppCompatActivity {
         String idUP = usuarioPerfil.getEmail().replace(".","%");
 
         pathGeneral.child("usuarios").child(idUP).setValue(usuarioPerfil);
+        System.out.println("desde Competicion previo usuario " + nombreUsuario + "--" + emailUsuario);
 
+        //montarUsuariosMuestra(pathGeneral);
+       // montarVideosMuestra(pathGeneral);
+    }
+
+    private void montarVideosMuestra(Firebase pathGeneral) {
+
+
+    }
+
+    private void montarUsuariosMuestra(Firebase pathGeneral) {
+
+        NuevoUsuarioPerfil usuarioPerfil1 = new NuevoUsuarioPerfil("Prueba1", "Prueba1@mail.com");
+        String idUP1 = usuarioPerfil1.getEmail().replace(".","%");
+        pathGeneral.child("usuarios").child(idUP1).setValue(usuarioPerfil1);
+
+        NuevoUsuarioPerfil usuarioPerfil2 = new NuevoUsuarioPerfil("Prueba2", "Prueba2@mail.com");
+        String idUP2 = usuarioPerfil2.getEmail().replace(".","%");
+        pathGeneral.child("usuarios").child(idUP2).setValue(usuarioPerfil2);
+
+        NuevoUsuarioPerfil usuarioPerfil3 = new NuevoUsuarioPerfil("Prueba3", "Prueba3@mail.com");
+        String idUP3 = usuarioPerfil3.getEmail().replace(".","%");
+        pathGeneral.child("usuarios").child(idUP3).setValue(usuarioPerfil3);
+
+        NuevoUsuarioPerfil usuarioPerfil4 = new NuevoUsuarioPerfil("Prueba4", "Prueba4@mail.com");
+        String idUP4 = usuarioPerfil4.getEmail().replace(".","%");
+        pathGeneral.child("usuarios").child(idUP4).setValue(usuarioPerfil4);
     }
 
 
@@ -142,13 +169,14 @@ public class NuevoMenuPrincipalColumnas extends AppCompatActivity {
          * number.
          */
         public static Fragment newInstance(int sectionNumber) {
+            System.out.println("A NEW INSTANCE "+nombreUsuario+"--"+emailUsuario);
             Fragment fragment = null;
             switch(sectionNumber){
                 case 1:
                     fragment = new NuevoMenuMiPerfil(nombreUsuario, emailUsuario);
                     break;
                 case 2:
-                    fragment = new NuevoMenuComunidad();
+                    fragment = new NuevoMenuComunidad(nombreUsuario, emailUsuario);
                     //fragment = new RaggaeMusicFragment();
                     break;
             }

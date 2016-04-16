@@ -4,10 +4,14 @@ package com.bikeworld.bikeworld;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.bikeworld.bikeworld.TablasUsuario.FragmentTabla1;
+import com.bikeworld.bikeworld.TablasUsuario.Tablas;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,8 +29,15 @@ public class NuevoMenuMiPerfil extends Fragment {
     private FragmentTabHost mTabHost;
 
     public NuevoMenuMiPerfil(String nombreUsuario, String emailUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.emailUsuario = emailUsuario;
     }
 
+    public NuevoMenuMiPerfil() {
+
+    }
+
+    public static FragmentTabla1 f1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,13 +46,26 @@ public class NuevoMenuMiPerfil extends Fragment {
         nombreMostrar = (TextView) rootView.findViewById(R.id.idNombrePerfil);
         emailMostrar = (TextView) rootView.findViewById(R.id.idEmailUsuario);
 
+        System.out.println("DATOS ANTERIORES: " + nombreUsuario + " " + emailUsuario);
+
         nombreMostrar.setText(nombreUsuario);
         emailMostrar.setText(emailUsuario);
 
+        f1 = new FragmentTabla1();
+        f1.setEmailT1(emailUsuario);
+        f1.setNombreT1(nombreUsuario);
+
 
         Tablas fragmenttab = new Tablas();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.item_detail_container, fragmenttab).commit();
+        Bundle parametro = new Bundle();
+        parametro.putString("key", emailUsuario);
+        /*getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.item_detail_container, fragmenttab).commit();*/
+        final FragmentTransaction ft = getFragmentManager()
+                .beginTransaction();
+        ft.replace(R.id.item_detail_container, fragmenttab, "tag");
+        ft.addToBackStack("tag");
+        ft.commit();
 
         return rootView;
     }

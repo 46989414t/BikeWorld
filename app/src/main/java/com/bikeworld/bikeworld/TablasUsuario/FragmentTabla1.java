@@ -172,11 +172,13 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                adaptador2.notifyDataSetChanged();
 
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+                adaptador2.notifyDataSetChanged();
 
             }
 
@@ -230,7 +232,7 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
     private void insertarVideos(Firebase pathGeneral) {
         Date date = new Date();
-        NuevoVideo v1 = new NuevoVideo("enric@admin.com", "tituilo2", "descrip2", date,"https://www.youtube.com/watch?v=R4aMHPPKYRE",null);
+        NuevoVideo v1 = new NuevoVideo("enric@admin.com", "tituilo2", "descrip2", date,"https://www.youtube.com/watch?v=R4aMHPPKYRE");
         pathGeneral.child("videos").child("video_"+date).setValue(v1);
 
     }

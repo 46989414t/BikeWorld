@@ -1,6 +1,5 @@
 package com.bikeworld.bikeworld.ObjetosNuevos;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,18 +11,17 @@ public class NuevoVideo {
     String descripcion;
     Date fecha;
     String url;
-    ArrayList<String> comentarios;
+
 
     public NuevoVideo() {
     }
 
-    public NuevoVideo(String emaiUser, String titulo, String descripcion, Date fecha, String url, ArrayList<String> comentarios) {
+    public NuevoVideo(String emaiUser, String titulo, String descripcion, Date fecha, String url) {
         this.emaiUser = emaiUser;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.url = url;
-        this.comentarios = comentarios;
     }
 
     public String getEmaiUser() {
@@ -66,11 +64,5 @@ public class NuevoVideo {
         this.url = url;
     }
 
-    public ArrayList<String> getComentarios() {
-        return comentarios;
-    }
 
-    public void setComentarios(ArrayList<String> comentarios) {
-        this.comentarios = comentarios;
-    }
 }

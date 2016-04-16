@@ -35,7 +35,7 @@ public class Tablas extends Fragment {
 
         mTabHost.addTab(mTabHost.newTabSpec("fragmentb").setIndicator("Mis Videos"),
                 FragmentTabla1.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator("Fragment C"),
+        mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator("Nuevo"),
                 FragmentTabla2.class, null);
         /*mTabHost.addTab(mTabHost.newTabSpec("fragmentd").setIndicator("Fragment D"),
                 FragmentD.class, null);*/

@@ -145,6 +145,15 @@
             android:label="@string/title_activity_nuevo_menu_principal_columnas"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".ContestarComentarios"
+            android:label="@string/title_activity_contestar_comentarios"
+            android:parentActivityName=".NuevoMenuPrincipalColumnas"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bikeworld.bikeworld.NuevoMenuPrincipalColumnas" />
+        </activity>
     </application>
 
 </manifest>

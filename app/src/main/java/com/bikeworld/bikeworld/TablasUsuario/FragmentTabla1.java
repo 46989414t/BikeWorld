@@ -11,10 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.bikeworld.bikeworld.AdaptadoresNuevos.AdaptadorComentarios;
 import com.bikeworld.bikeworld.AdaptadoresNuevos.AdaptadorVideos;
 import com.bikeworld.bikeworld.NuevoMenuMiPerfil;
+import com.bikeworld.bikeworld.ObjetosNuevos.ComentariosVideos;
 import com.bikeworld.bikeworld.ObjetosNuevos.NuevoVideo;
 import com.bikeworld.bikeworld.R;
 import com.firebase.client.ChildEventListener;
@@ -90,6 +94,7 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 System.out.println("ha clicado un item de la lista");
                 //Objeto elegido
                 final NuevoVideo videoElegido = (NuevoVideo) parent.getItemAtPosition(position);
@@ -98,12 +103,37 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
                 //--------
 
                 LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-                View promptView = layoutInflater.inflate(R.layout.pop_up_video_comentarios, null);
+                View promptView = layoutInflater.inflate(R.layout.pop_up_comentarios_videos, null);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                 alertDialogBuilder.setView(promptView);
+
+
+                final ArrayList<ComentariosVideos> listMensajes= new ArrayList<>();
+                ListView list = (ListView) promptView.findViewById(R.id.idListaComentariosRes);
+                final AdaptadorComentarios adaptador2 = new AdaptadorComentarios(getActivity(), listMensajes);
+                list.setAdapter(adaptador2);
+
+                cargarLista(pathGeneral, videoElegido, adaptador2, listMensajes);
+
                 //final TextView usuarioRespuesta = (TextView) promptView.findViewById(R.id.idUsuarioRespuesta);
                 //usuarioRespuesta.setText(menRemitente);
-                //final EditText editText = (EditText) promptView.findViewById(R.id.edittext);
+
+                final EditText editText = (EditText) promptView.findViewById(R.id.idEnviarComentario);
+                final ImageButton botonEnviar = (ImageButton) promptView.findViewById(R.id.idBotonEnviar);
+                botonEnviar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ComentariosVideos nuevoComent = new ComentariosVideos();
+                        Date date = new Date();
+                        String mensaje = editText.getText().toString();
+
+                        nuevoComent.setComentario(f1.getNombreT1() + ": " + mensaje);
+
+                        //videoElegido.setComentarios(nombreT1+": "+mensaje);
+                        pathGeneral.child("comentarios").child("video_"+videoElegido.getFecha()).child(f1.getEmailT1().replace(".","%")+date.toString()).setValue(nuevoComent.getComentario());
+                        editText.setText("");
+                    }
+                });
                 // setup a dialog window
                 alertDialogBuilder.setCancelable(false)
                         .setPositiveButton("Ver video", new DialogInterface.OnClickListener() {
@@ -129,6 +159,38 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
         return rootView;
     }
 
+    private void cargarLista(Firebase pathGeneral, NuevoVideo videoElegido, final AdaptadorComentarios adaptador2, final ArrayList<ComentariosVideos> listMensajes) {
+
+        pathGeneral.child("comentarios").child("video_"+videoElegido.getFecha()).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                adaptador2.notifyDataSetChanged();
+                ComentariosVideos video = dataSnapshot.getValue(ComentariosVideos.class);
+                listMensajes.add(video);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
 
 
     private void extraerVideos(Firebase pathGeneral, final FragmentTabla1 f1, final AdaptadorVideos adaptador, final ArrayList<NuevoVideo> listaVideos) {

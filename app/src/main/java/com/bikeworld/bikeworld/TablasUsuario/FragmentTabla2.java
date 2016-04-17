@@ -30,31 +30,31 @@ public class FragmentTabla2 extends NuevoMenuMiPerfil{
         // Required empty public constructor
     }
 
-    public FragmentTabla2(String nombreUsuario, String emailUsuario, String emailT1, String nombreT1) {
+    public FragmentTabla2(String nombreUsuario, String emailUsuario, String emailT2, String nombreT2) {
         super(nombreUsuario, emailUsuario);
-        this.emailT2 = emailT1;
-        this.nombreT2 = nombreT1;
+        this.emailT2 = emailT2;
+        this.nombreT2 = nombreT2;
     }
 
-    public FragmentTabla2(String emailT1, String nombreT1) {
-        this.emailT2 = emailT1;
-        this.nombreT2 = nombreT1;
+    public FragmentTabla2(String emailT2, String nombreT2) {
+        this.emailT2 = emailT2;
+        this.nombreT2 = nombreT2;
     }
 
-    public String getEmailT1() {
+    public String getEmailT2() {
         return emailT2;
     }
 
-    public void setEmailT1(String emailT1) {
-        this.emailT2 = emailT1;
+    public void setEmailT2(String emailT2) {
+        this.emailT2 = emailT2;
     }
 
-    public String getNombreT1() {
+    public String getNombreT2() {
         return nombreT2;
     }
 
-    public void setNombreT1(String nombreT1) {
-        this.nombreT2 = nombreT1;
+    public void setNombreT2(String nombreT2) {
+        this.nombreT2 = nombreT2;
     }
 
     private EditText titulo;
@@ -76,30 +76,27 @@ public class FragmentTabla2 extends NuevoMenuMiPerfil{
         URL = (EditText) rootView.findViewById(R.id.idURLNuevoVideo);
         cargar = (Button) rootView.findViewById(R.id.idBotonCargarNuevoVideo);
 
-        nuevoVideo = new NuevoVideo();
+        final String strTitulo = titulo.getText().toString();
+        final String strDescripcion = descripcion.getText().toString();
+        final String strUrl = URL.getText().toString();
 
-
-       cargar.setOnClickListener(new View.OnClickListener() {
+        cargar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nuevoVideo.getTitulo().equals("") || nuevoVideo.getDescripcion().equals("") || nuevoVideo.getUrl().equals("")){
-                    Toast toast = Toast.makeText(getActivity(), "Campos vacíos", Toast.LENGTH_LONG);
-                    toast.show();
-                }else{
-                    Date date =new Date();
-
-                    nuevoVideo.setTitulo(titulo.getText().toString());
-                    nuevoVideo.setDescripcion(descripcion.getText().toString());
-                    nuevoVideo.setUrl(URL.getText().toString());
-                    nuevoVideo.setEmaiUser(f2.getEmailT1());
-                    nuevoVideo.setFecha(date);
-                    pathGeneral.child("videos").child("video_"+nuevoVideo.getFecha()).setValue(nuevoVideo);
+                System.out.println("Hace el click");
+                    Date date = new Date();
+                    nuevoVideo = new NuevoVideo(f2.getEmailT2(),strTitulo,strDescripcion,date,strUrl);
+                    pathGeneral.child("videos").child("video_"+date).setValue(nuevoVideo);
                     titulo.setText("");
                     descripcion.setText("");
                     URL.setText("");
-                }
             }
         });
+
+
+
+
+
 
         // Inflate the layout for this fragment
         return rootView;

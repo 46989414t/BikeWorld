@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bikeworld.bikeworld.TablasUsuario.FragmentTabla1;
+import com.bikeworld.bikeworld.TablasUsuario.FragmentTabla2;
 import com.bikeworld.bikeworld.TablasUsuario.Tablas;
 
 /**
@@ -38,7 +39,7 @@ public class NuevoMenuMiPerfil extends Fragment {
     }
 
     public static FragmentTabla1 f1;
-    public static FragmentTabla1 f2;
+    public static FragmentTabla2 f2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,9 +57,9 @@ public class NuevoMenuMiPerfil extends Fragment {
         f1.setEmailT1(emailUsuario);
         f1.setNombreT1(nombreUsuario);
 
-        f2 = new FragmentTabla1();
-        f2.setEmailT1(emailUsuario);
-        f2.setNombreT1(nombreUsuario);
+        f2 = new FragmentTabla2();
+        f2.setEmailT2(emailUsuario);
+        f2.setNombreT2(nombreUsuario);
 
 
         Tablas fragmenttab = new Tablas();

@@ -136,6 +136,14 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
                 });
                 // setup a dialog window
                 alertDialogBuilder.setCancelable(false)
+                        .setNeutralButton("Editar", new DialogInterface.OnClickListener(){
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                                abrirSegundoPopUp(videoElegido, pathGeneral);
+                            }
+                        })
                         .setPositiveButton("Ver video", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 String urlSelecc = videoElegido.getUrl();
@@ -157,6 +165,51 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
         });
 
         return rootView;
+    }
+
+    private void abrirSegundoPopUp(final NuevoVideo videoElegido, final Firebase pathGeneral) {
+        LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+        final View pop2 = layoutInflater.inflate(R.layout.pop_up_editar_video, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setView(pop2);
+
+        final EditText titulo = (EditText) pop2.findViewById(R.id.idTituloEditar);
+        final EditText descripcion = (EditText) pop2.findViewById(R.id.idDescripcionEditar);
+        final EditText url = (EditText) pop2.findViewById(R.id.idUrlEditar);
+
+        titulo.setText(videoElegido.getTitulo());
+        descripcion.setText(videoElegido.getDescripcion());
+        url.setText(videoElegido.getUrl());
+
+
+
+        // setup a dialog window
+        alertDialogBuilder.setCancelable(false)
+                .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        String strTituloEdit = titulo.getText().toString();
+                        String strDescripcionEdit = descripcion.getText().toString();
+                        String strUrlEdit = url.getText().toString();
+                        videoElegido.setTitulo(strTituloEdit);
+                        videoElegido.setDescripcion(strDescripcionEdit);
+                        videoElegido.setUrl(strUrlEdit);
+                        pathGeneral.child("videos").child("video_"+videoElegido.getFecha()).child("titulo").setValue(strTituloEdit);
+                        pathGeneral.child("videos").child("video_"+videoElegido.getFecha()).child("descripcion").setValue(strDescripcionEdit);
+                        pathGeneral.child("videos").child("video_"+videoElegido.getFecha()).child("url").setValue(strUrlEdit);
+                        System.out.println("DATOS DEL VIDEO: " + videoElegido.getTitulo() + videoElegido.getDescripcion());
+
+                    }
+                })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create an alert dialog
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 
     private void cargarLista(Firebase pathGeneral, NuevoVideo videoElegido, final AdaptadorComentarios adaptador2, final ArrayList<ComentariosVideos> listMensajes) {

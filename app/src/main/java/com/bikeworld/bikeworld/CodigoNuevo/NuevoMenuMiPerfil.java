@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld;
+package com.bikeworld.bikeworld.CodigoNuevo;
 
 
 import android.os.Bundle;
@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bikeworld.bikeworld.TablasUsuario.FragmentTabla1;
-import com.bikeworld.bikeworld.TablasUsuario.FragmentTabla2;
-import com.bikeworld.bikeworld.TablasUsuario.Tablas;
+import com.bikeworld.bikeworld.R;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasUsuario.FragmentTabla1;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasUsuario.FragmentTabla2;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasUsuario.Tablas;
 
 /**
  * A simple {@link Fragment} subclass.

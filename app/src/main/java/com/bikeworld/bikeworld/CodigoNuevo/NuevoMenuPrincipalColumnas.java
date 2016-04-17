@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld;
+package com.bikeworld.bikeworld.CodigoNuevo;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,7 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bikeworld.bikeworld.ObjetosNuevos.NuevoUsuarioPerfil;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.NuevoUsuarioPerfil;
+import com.bikeworld.bikeworld.R;
 import com.firebase.client.Firebase;
 
 public class NuevoMenuPrincipalColumnas extends AppCompatActivity {

@@ -136,23 +136,23 @@
                 android:value=".Antiguos.MenuPrincipalTipo2" />
         </activity>
         <activity
-            android:name=".NuevoMenuLateral"
+            android:name=".CodigoNuevo.NuevoMenuLateral"
             android:label="@string/title_activity_nuevo_menu_lateral"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".NuevoMenuPrincipalColumnas"
+            android:name=".CodigoNuevo.NuevoMenuPrincipalColumnas"
             android:label="@string/title_activity_nuevo_menu_principal_columnas"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ContestarComentarios"
+            android:name=".CodigoNuevo.ContestarComentarios"
             android:label="@string/title_activity_contestar_comentarios"
-            android:parentActivityName=".NuevoMenuPrincipalColumnas"
+            android:parentActivityName=".CodigoNuevo.NuevoMenuPrincipalColumnas"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bikeworld.bikeworld.NuevoMenuPrincipalColumnas" />
+                android:value=".CodigoNuevo.NuevoMenuPrincipalColumnas" />
         </activity>
     </application>
 

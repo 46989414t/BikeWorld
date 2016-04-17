@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.ObjetosNuevos;
+package com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos;
 
 import java.util.Date;
 

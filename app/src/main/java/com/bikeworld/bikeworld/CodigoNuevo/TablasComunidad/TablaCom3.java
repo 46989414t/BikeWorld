@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.TablasComunidad;
+package com.bikeworld.bikeworld.CodigoNuevo.TablasComunidad;
 
 
 import android.os.Bundle;

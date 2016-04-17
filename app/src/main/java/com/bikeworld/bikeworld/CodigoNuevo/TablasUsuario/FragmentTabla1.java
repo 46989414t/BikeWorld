@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.TablasUsuario;
+package com.bikeworld.bikeworld.CodigoNuevo.TablasUsuario;
 
 
 import android.app.AlertDialog;
@@ -15,11 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.bikeworld.bikeworld.AdaptadoresNuevos.AdaptadorComentarios;
-import com.bikeworld.bikeworld.AdaptadoresNuevos.AdaptadorVideos;
-import com.bikeworld.bikeworld.NuevoMenuMiPerfil;
-import com.bikeworld.bikeworld.ObjetosNuevos.ComentariosVideos;
-import com.bikeworld.bikeworld.ObjetosNuevos.NuevoVideo;
+import com.bikeworld.bikeworld.CodigoNuevo.AdaptadoresNuevos.AdaptadorComentarios;
+import com.bikeworld.bikeworld.CodigoNuevo.AdaptadoresNuevos.AdaptadorVideos;
+import com.bikeworld.bikeworld.CodigoNuevo.NuevoMenuMiPerfil;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.ComentariosVideos;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.NuevoVideo;
 import com.bikeworld.bikeworld.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;

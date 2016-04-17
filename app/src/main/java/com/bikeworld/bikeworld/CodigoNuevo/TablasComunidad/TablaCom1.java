@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.TablasComunidad;
+package com.bikeworld.bikeworld.CodigoNuevo.TablasComunidad;
 
 
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.bikeworld.bikeworld.AdaptadoresNuevos.AdaptadorUsuarios;
-import com.bikeworld.bikeworld.NuevoMenuComunidad;
-import com.bikeworld.bikeworld.ObjetosNuevos.NuevoUsuarioPerfil;
+import com.bikeworld.bikeworld.CodigoNuevo.AdaptadoresNuevos.AdaptadorUsuarios;
+import com.bikeworld.bikeworld.CodigoNuevo.NuevoMenuComunidad;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.NuevoUsuarioPerfil;
 import com.bikeworld.bikeworld.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;

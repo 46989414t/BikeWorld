@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.TablasUsuario;
+package com.bikeworld.bikeworld.CodigoNuevo.TablasUsuario;
 
 
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.bikeworld.bikeworld.NuevoMenuMiPerfil;
-import com.bikeworld.bikeworld.ObjetosNuevos.NuevoVideo;
+import com.bikeworld.bikeworld.CodigoNuevo.NuevoMenuMiPerfil;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.NuevoVideo;
 import com.bikeworld.bikeworld.R;
 import com.firebase.client.Firebase;
 

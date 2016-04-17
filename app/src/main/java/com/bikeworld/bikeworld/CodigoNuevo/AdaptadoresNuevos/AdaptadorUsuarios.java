@@ -1,8 +1,4 @@
-package com.bikeworld.bikeworld.AdaptadoresNuevos;
-
-/**
- * Created by enric on 15/4/16.
- */
+package com.bikeworld.bikeworld.CodigoNuevo.AdaptadoresNuevos;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.bikeworld.bikeworld.ObjetosNuevos.NuevoVideo;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.NuevoUsuarioPerfil;
 import com.bikeworld.bikeworld.R;
 
 import java.util.ArrayList;
 
-
 /**
- * Created by enric on 27/3/16.
+ * Created by enric on 17/4/16.
  */
-public class AdaptadorVideos extends BaseAdapter {
-    private static ArrayList<NuevoVideo> listContact;
+public class AdaptadorUsuarios extends BaseAdapter {
+    private static ArrayList<NuevoUsuarioPerfil> listContact;
 
     private LayoutInflater mInflater;
 
-    public AdaptadorVideos(Context photosFragment, ArrayList<NuevoVideo> results){
+    public AdaptadorUsuarios(Context photosFragment, ArrayList<NuevoUsuarioPerfil> results){
         listContact = results;
         mInflater = LayoutInflater.from(photosFragment);
     }
@@ -53,11 +48,11 @@ public class AdaptadorVideos extends BaseAdapter {
         // TODO Auto-generated method stub
         ViewHolder holder;
         if(convertView == null){
-            convertView = mInflater.inflate(R.layout.item_video, null);
+            convertView = mInflater.inflate(R.layout.item_usuario, null);
             holder = new ViewHolder();
-            holder.nombre = (TextView) convertView.findViewById(R.id.idNuevoNombreVideo);
-            holder.fecha = (TextView) convertView.findViewById(R.id.idNuevaFechaVideo);
-            holder.descripcion = (TextView) convertView.findViewById(R.id.idNuevaDescripcionVideo);
+            holder.nombre = (TextView) convertView.findViewById(R.id.idNombreUsuarioLista);
+            holder.email = (TextView) convertView.findViewById(R.id.idEmailUsuarioLista);
+            //holder.descripcion = (TextView) convertView.findViewById(R.id.idNuevaDescripcionVideo);
             //holder.txtDescripcion = (TextView) convertView.findViewById(R.id.idDescripcionEtapa);
 
             convertView.setTag(holder);
@@ -65,9 +60,9 @@ public class AdaptadorVideos extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.nombre.setText(listContact.get(position).getTitulo());
-        holder.fecha.setText(listContact.get(position).getFecha().toString());
-        holder.descripcion.setText(listContact.get(position).getDescripcion());
+        holder.nombre.setText(listContact.get(position).getNombre());
+        holder.email.setText(listContact.get(position).getEmail());
+        //holder.descripcion.setText(listContact.get(position).getDescripcion());
         //holder.txtDescripcion.setText(listContact.get(position).getDescripcion());
         //holder.txtphone.setText(listContact.get(position).GetPhone());
 
@@ -76,8 +71,8 @@ public class AdaptadorVideos extends BaseAdapter {
 
     static class ViewHolder{
         TextView nombre;
-        TextView fecha;
-        TextView descripcion;
+        TextView email;
+        //TextView descripcion;
         //TextView txtDescripcion;
     }
 }

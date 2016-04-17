@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld.AdaptadoresNuevos;
+package com.bikeworld.bikeworld.CodigoNuevo.AdaptadoresNuevos;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.bikeworld.bikeworld.ObjetosNuevos.ComentariosVideos;
+import com.bikeworld.bikeworld.CodigoNuevo.ObjetosNuevos.ComentariosVideos;
 import com.bikeworld.bikeworld.R;
 
 import java.util.ArrayList;

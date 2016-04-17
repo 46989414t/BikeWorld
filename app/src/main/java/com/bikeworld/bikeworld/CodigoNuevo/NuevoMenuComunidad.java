@@ -1,4 +1,4 @@
-package com.bikeworld.bikeworld;
+package com.bikeworld.bikeworld.CodigoNuevo;
 
 
 import android.os.Bundle;
@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bikeworld.bikeworld.TablasComunidad.TablaCom1;
-import com.bikeworld.bikeworld.TablasComunidad.TablaCom2;
-import com.bikeworld.bikeworld.TablasComunidad.TablasComunidad;
+import com.bikeworld.bikeworld.R;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasComunidad.TablaCom1;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasComunidad.TablaCom2;
+import com.bikeworld.bikeworld.CodigoNuevo.TablasComunidad.TablasComunidad;
 
 
 /**

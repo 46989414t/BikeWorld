@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.bikeworld.bikeworld.NuevoMenuMiPerfil;
 import com.bikeworld.bikeworld.ObjetosNuevos.NuevoVideo;
@@ -76,20 +75,21 @@ public class FragmentTabla2 extends NuevoMenuMiPerfil{
         URL = (EditText) rootView.findViewById(R.id.idURLNuevoVideo);
         cargar = (Button) rootView.findViewById(R.id.idBotonCargarNuevoVideo);
 
-        final String strTitulo = titulo.getText().toString();
-        final String strDescripcion = descripcion.getText().toString();
-        final String strUrl = URL.getText().toString();
+
 
         cargar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Hace el click");
-                    Date date = new Date();
-                    nuevoVideo = new NuevoVideo(f2.getEmailT2(),strTitulo,strDescripcion,date,strUrl);
-                    pathGeneral.child("videos").child("video_"+date).setValue(nuevoVideo);
-                    titulo.setText("");
-                    descripcion.setText("");
-                    URL.setText("");
+                String strTitulo = titulo.getText().toString();
+                String strDescripcion = descripcion.getText().toString();
+                String strUrl = URL.getText().toString();
+                Date date = new Date();
+                nuevoVideo = new NuevoVideo(f2.getEmailT2(),strTitulo,strDescripcion,date,strUrl);
+                pathGeneral.child("videos").child("video_"+date).setValue(nuevoVideo);
+                titulo.setText("");
+                descripcion.setText("");
+                URL.setText("");
             }
         });
 

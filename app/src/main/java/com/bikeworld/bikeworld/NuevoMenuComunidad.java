@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bikeworld.bikeworld.TablasComunidad.TablaCom1;
 import com.bikeworld.bikeworld.TablasComunidad.TablaCom2;
 import com.bikeworld.bikeworld.TablasComunidad.TablasComunidad;
 
@@ -28,16 +29,21 @@ public class NuevoMenuComunidad extends Fragment {
         this.emailUsuario = emailUsuario;
     }
 
-    public static TablaCom2 f1;
+    public static TablaCom2 f22;
+    public static TablaCom1 f11;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_nuevo_menu_comunidad, container, false);
 
 
-        f1 = new TablaCom2();
-        f1.setEmailT1(emailUsuario);
-        f1.setNombreT1(nombreUsuario);
+        f22 = new TablaCom2();
+        f22.setEmailT22(emailUsuario);
+        f22.setNombreT22(nombreUsuario);
+
+        f11 = new TablaCom1();
+        f11.setEmailT11(emailUsuario);
+        f11.setNombreT11(nombreUsuario);
 
         TablasComunidad fragmenttab = new TablasComunidad();
         Bundle parametro = new Bundle();

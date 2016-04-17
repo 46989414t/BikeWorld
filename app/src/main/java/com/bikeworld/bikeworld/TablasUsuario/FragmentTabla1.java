@@ -80,9 +80,6 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
         System.out.println("TABLA 1: " + f1.getEmailT1());
 
-        //insertarVideos(pathGeneral);
-
-        //final ArrayList<UserProfile> listContact = GetlistContact(pathGeneral, userProf);
         final ArrayList<NuevoVideo> listaVideos= new ArrayList<>();
         ListView lv = (ListView) rootView.findViewById(R.id.listView2);
         final AdaptadorVideos adaptador = new AdaptadorVideos(getActivity(), listaVideos);
@@ -98,9 +95,6 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
                 System.out.println("ha clicado un item de la lista");
                 //Objeto elegido
                 final NuevoVideo videoElegido = (NuevoVideo) parent.getItemAtPosition(position);
-                //final String menRemitente = videoElegido.getTitulo();
-                //System.out.println("Remitente a responder: " + menRemitente);
-                //--------
 
                 LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View promptView = layoutInflater.inflate(R.layout.pop_up_comentarios_videos, null);
@@ -108,21 +102,19 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
                 alertDialogBuilder.setView(promptView);
 
 
-                final ArrayList<ComentariosVideos> listMensajes= new ArrayList<>();
+                final ArrayList<ComentariosVideos> listMensajes = new ArrayList<>();
                 ListView list = (ListView) promptView.findViewById(R.id.idListaComentariosRes);
                 final AdaptadorComentarios adaptador2 = new AdaptadorComentarios(getActivity(), listMensajes);
                 list.setAdapter(adaptador2);
 
                 cargarLista(pathGeneral, videoElegido, adaptador2, listMensajes);
 
-                //final TextView usuarioRespuesta = (TextView) promptView.findViewById(R.id.idUsuarioRespuesta);
-                //usuarioRespuesta.setText(menRemitente);
-
                 final EditText editText = (EditText) promptView.findViewById(R.id.idEnviarComentario);
                 final ImageButton botonEnviar = (ImageButton) promptView.findViewById(R.id.idBotonEnviar);
                 botonEnviar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        System.out.println("EL VIDEO SELECCIONADO: "+videoElegido.getTitulo());
                         ComentariosVideos nuevoComent = new ComentariosVideos();
                         Date date = new Date();
                         String mensaje = editText.getText().toString();
@@ -130,13 +122,14 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
                         nuevoComent.setComentario(f1.getNombreT1() + ": " + mensaje);
 
                         //videoElegido.setComentarios(nombreT1+": "+mensaje);
-                        pathGeneral.child("comentarios").child("video_"+videoElegido.getFecha()).child(f1.getEmailT1().replace(".","%")+date.toString()).setValue(nuevoComent.getComentario());
+                        pathGeneral.child("comentarios").child("video_" + videoElegido.getFecha()).child(f1.getEmailT1().replace(".", "%") + date.toString()).setValue(nuevoComent.getComentario());
+
                         editText.setText("");
                     }
                 });
                 // setup a dialog window
                 alertDialogBuilder.setCancelable(false)
-                        .setNeutralButton("Editar", new DialogInterface.OnClickListener(){
+                        .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -164,6 +157,34 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
             }
         });
 
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final NuevoVideo elegido = (NuevoVideo) parent.getItemAtPosition(position);
+                System.out.println("Llega al click largo con Objeto seleccionado: " + elegido);
+                AlertDialog.Builder dialogoEliminar = new AlertDialog.Builder(getActivity());
+                dialogoEliminar.setTitle("Eliminar");
+                dialogoEliminar.setMessage("¿desea Eliminar la seleccion?");
+
+                dialogoEliminar.setCancelable(false)
+                        .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                pathGeneral.child("videos").child("video_" + elegido.getFecha()).removeValue();
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                dialogoEliminar.show();
+
+                return true;
+            }
+        });
+
         return rootView;
     }
 
@@ -180,8 +201,6 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
         titulo.setText(videoElegido.getTitulo());
         descripcion.setText(videoElegido.getDescripcion());
         url.setText(videoElegido.getUrl());
-
-
 
         // setup a dialog window
         alertDialogBuilder.setCancelable(false)
@@ -237,12 +256,13 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                adaptador2.notifyDataSetChanged();
 
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
+                adaptador2.notifyDataSetChanged();
             }
         });
     }
@@ -272,11 +292,13 @@ public class FragmentTabla1 extends NuevoMenuMiPerfil {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                adaptador.notifyDataSetChanged();
 
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
+                adaptador.notifyDataSetChanged();
 
             }
         });

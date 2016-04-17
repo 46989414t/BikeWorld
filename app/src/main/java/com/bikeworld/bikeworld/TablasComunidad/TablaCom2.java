@@ -33,34 +33,34 @@ import java.util.Date;
  * A simple {@link Fragment} subclass.
  */
 public class TablaCom2 extends NuevoMenuComunidad {
-    String emailT1;
-    String nombreT1;
+    String emailT22;
+    String nombreT22;
 
-    public TablaCom2(String emailT1, String nombreT1) {
-        this.emailT1 = emailT1;
-        this.nombreT1 = nombreT1;
+    public TablaCom2(String emailT22, String nombreT22) {
+        this.emailT22 = emailT22;
+        this.nombreT22 = nombreT22;
     }
 
-    public TablaCom2(String nombreUsuario, String emailUsuario, String emailT1, String nombreT1) {
+    public TablaCom2(String nombreUsuario, String emailUsuario, String emailT22, String nombreT22) {
         super(nombreUsuario, emailUsuario);
-        this.emailT1 = emailT1;
-        this.nombreT1 = nombreT1;
+        this.emailT22 = emailT22;
+        this.nombreT22 = nombreT22;
     }
 
-    public String getEmailT1() {
-        return emailT1;
+    public String getEmailT22() {
+        return emailT22;
     }
 
-    public void setEmailT1(String emailT1) {
-        this.emailT1 = emailT1;
+    public void setEmailT22(String emailT22) {
+        this.emailT22 = emailT22;
     }
 
-    public String getNombreT1() {
-        return nombreT1;
+    public String getNombreT22() {
+        return nombreT22;
     }
 
-    public void setNombreT1(String nombreT1) {
-        this.nombreT1 = nombreT1;
+    public void setNombreT22(String nombreT22) {
+        this.nombreT22 = nombreT22;
     }
 
     public TablaCom2() {
@@ -72,11 +72,11 @@ public class TablaCom2 extends NuevoMenuComunidad {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_fragment_tabla1, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_tabla_com2, container, false);
         final Firebase pathGeneral = new Firebase(rutaGeneral);
 
         final ArrayList<NuevoVideo> listaVideos= new ArrayList<>();
-        ListView lv = (ListView) rootView.findViewById(R.id.listView2);
+        ListView lv = (ListView) rootView.findViewById(R.id.idListaVideosComunidad);
         final AdaptadorVideos adaptador = new AdaptadorVideos(getActivity(), listaVideos);
         lv.setAdapter(adaptador);
 
@@ -89,10 +89,7 @@ public class TablaCom2 extends NuevoMenuComunidad {
 
                 System.out.println("ha clicado un item de la lista");
                 //Objeto elegido
-                final NuevoVideo videoElegido = (NuevoVideo) parent.getItemAtPosition(position);
-                //final String menRemitente = videoElegido.getTitulo();
-                //System.out.println("Remitente a responder: " + menRemitente);
-                //--------
+                final NuevoVideo videoSelec = (NuevoVideo) parent.getItemAtPosition(position);
 
                 LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View promptView = layoutInflater.inflate(R.layout.pop_up_comentarios_videos, null);
@@ -102,13 +99,10 @@ public class TablaCom2 extends NuevoMenuComunidad {
 
                 final ArrayList<ComentariosVideos> listMensajes= new ArrayList<>();
                 ListView list = (ListView) promptView.findViewById(R.id.idListaComentariosRes);
-                final AdaptadorComentarios adaptador2 = new AdaptadorComentarios(getActivity(), listMensajes);
-                list.setAdapter(adaptador2);
+                final AdaptadorComentarios adaptador22 = new AdaptadorComentarios(getActivity(), listMensajes);
+                list.setAdapter(adaptador22);
 
-                cargarLista(pathGeneral, videoElegido, adaptador2, listMensajes);
-
-                //final TextView usuarioRespuesta = (TextView) promptView.findViewById(R.id.idUsuarioRespuesta);
-                //usuarioRespuesta.setText(menRemitente);
+                cargarListaComents(pathGeneral, videoSelec, adaptador22, listMensajes);
 
                 final EditText editText = (EditText) promptView.findViewById(R.id.idEnviarComentario);
                 final ImageButton botonEnviar = (ImageButton) promptView.findViewById(R.id.idBotonEnviar);
@@ -119,10 +113,9 @@ public class TablaCom2 extends NuevoMenuComunidad {
                         Date date = new Date();
                         String mensaje = editText.getText().toString();
 
-                        nuevoComent.setComentario(f1.getNombreT1() + ": " + mensaje);
+                        nuevoComent.setComentario(f22.getNombreT22() + ": " + mensaje);
 
-                        //videoElegido.setComentarios(nombreT1+": "+mensaje);
-                        pathGeneral.child("comentarios").child("video_"+videoElegido.getFecha()).child(f1.getEmailT1().replace(".","%")+date.toString()).setValue(nuevoComent.getComentario());
+                        pathGeneral.child("comentarios").child("video_"+videoSelec.getFecha()).child(f22.getEmailT22().replace(".","%")+date.toString()).setValue(nuevoComent.getComentario());
                         editText.setText("");
                     }
                 });
@@ -130,7 +123,7 @@ public class TablaCom2 extends NuevoMenuComunidad {
                 alertDialogBuilder.setCancelable(false)
                         .setPositiveButton("Ver video", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                String urlSelecc = videoElegido.getUrl();
+                                String urlSelecc = videoSelec.getUrl();
                                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlSelecc));
                                 startActivity(i);
                             }
@@ -157,38 +150,40 @@ public class TablaCom2 extends NuevoMenuComunidad {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 adaptador.notifyDataSetChanged();
                 NuevoVideo video = dataSnapshot.getValue(NuevoVideo.class);
-                if(!video.getEmaiUser().equalsIgnoreCase(f1.getEmailT1())){
+                if(!video.getEmaiUser().equalsIgnoreCase(f22.getEmailT22())){
                     listaVideos.add(video);
                 }
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                adaptador.notifyDataSetChanged();
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                adaptador.notifyDataSetChanged();
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                adaptador.notifyDataSetChanged();
 
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
+                adaptador.notifyDataSetChanged();
 
             }
         });
     }
-    private void cargarLista(Firebase pathGeneral, NuevoVideo videoElegido, final AdaptadorComentarios adaptador2, final ArrayList<ComentariosVideos> listMensajes) {
+    private void cargarListaComents(Firebase pathGeneral, NuevoVideo videoSelec, final AdaptadorComentarios adaptador22, final ArrayList<ComentariosVideos> listMensajes) {
 
-        pathGeneral.child("comentarios").child("video_" + videoElegido.getFecha()).addChildEventListener(new ChildEventListener() {
+        pathGeneral.child("comentarios").child("video_" + videoSelec.getFecha()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                adaptador2.notifyDataSetChanged();
+                adaptador22.notifyDataSetChanged();
                 ComentariosVideos video = dataSnapshot.getValue(ComentariosVideos.class);
                 listMensajes.add(video);
 
@@ -196,23 +191,25 @@ public class TablaCom2 extends NuevoMenuComunidad {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                adaptador2.notifyDataSetChanged();
+                adaptador22.notifyDataSetChanged();
 
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                adaptador2.notifyDataSetChanged();
+                adaptador22.notifyDataSetChanged();
 
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                adaptador22.notifyDataSetChanged();
 
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
+                adaptador22.notifyDataSetChanged();
 
             }
         });
